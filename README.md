@@ -1,66 +1,16 @@
-## Foundry
+# Read-Only Solidity Proxy
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+> [!CAUTION]
+> This is a just-for-fun idea I had and the contract is not audited so use with caution.
 
-Foundry consists of:
+`ReadOnlyProxy` is a smart contract that enables call delegation while preserving the state context, ensuring that any calls made through the proxy are restricted to read-only access to the storage.
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+This read-only access is enforced by using `staticcall` to call a function that performs a `delegatecall` to the target contract.
 
-## Documentation
+## Build
 
-https://book.getfoundry.sh/
+`forge build`
 
-## Usage
+## Tests
 
-### Build
-
-```shell
-$ forge build
-```
-
-### Test
-
-```shell
-$ forge test
-```
-
-### Format
-
-```shell
-$ forge fmt
-```
-
-### Gas Snapshots
-
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+`forge test`
