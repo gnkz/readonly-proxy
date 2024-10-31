@@ -46,7 +46,7 @@ abstract contract ReadOnlyProxy {
 
     /// @notice called inside the `fallback` or `receive` functions. It does an `staticcall` on
     /// `_delegate` proxying `msg.data`
-    function _fallback() internal view {
+    function _fallback() internal view virtual {
         address self = address(this);
         bytes memory data = abi.encodeWithSelector(ReadOnlyProxy._delegate.selector, msg.data);
 
